@@ -1,11 +1,15 @@
 from turtle import Turtle
+import random
+
+
+colors = ['red', 'blue', 'green', 'purple']
 
 
 class Brick(Turtle):
     def __init__(self, x, y, width, height):
         super().__init__()
         self.shape('square')
-        self.color("blue")
+        self.color(random.choice(colors))
         self.shapesize(stretch_wid=width / 20, stretch_len=height / 20)
         self.penup()
         self.goto(x, y)
@@ -60,6 +64,6 @@ class BrickDrawer:
                 brick.hide()
                 # Reflect ball direction
                 ball.y_move *= -1
-                return  # Only handle one collision at a time
+                return True  # Only handle one collision at a time
 
 
